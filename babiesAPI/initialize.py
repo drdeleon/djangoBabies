@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from guardian.shortcuts import assign_perm, remove_perm
 from parents.models import Parent
 
 user_parent_list = [
@@ -31,7 +32,6 @@ user_parent_list = [
 #     p = Parent(user=u, name=user['name'])
 #     p.save()
 
-#     print(p)
 
 print('USERS:')
 for usuario in User.objects.all():
@@ -40,4 +40,14 @@ for usuario in User.objects.all():
 print('PARENTS:')
 for parent in Parent.objects.all():
     print(parent)
+
+# u = User.objects.get(pk=7)
+# print(u.username)
+
+u = Parent.objects.get(name='Papá Dos')
+
+for baby in u.baby_set.all():
+    print(baby)
+
+
 

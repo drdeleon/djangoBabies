@@ -43,9 +43,9 @@ class ParentViewSet(viewsets.ModelViewSet):
     @action(detail=True, methods=['get'])
     def babies(self, request, pk=None):
         parent = self.get_object()
-        queryset = parent.baby_set
+        queryset = parent.baby_set.all()
 
         babies = BabySerializer(queryset, many=True).data
-        
+
         return Response(babies)
         

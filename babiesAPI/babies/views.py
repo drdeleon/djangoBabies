@@ -42,7 +42,7 @@ class BabyViewSet(viewsets.ModelViewSet):
     @action(detail=True, methods=['get'])
     def events(self, request, pk=None):
         baby = self.get_object()
-        queryset = baby.event_set
+        queryset = baby.event_set.all()
         events = EventSerializer(queryset, many=True).data
 
         return Response(events)
