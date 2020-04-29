@@ -42,8 +42,10 @@ INSTALLED_APPS = [
     'events.apps.EventsConfig',
     'parents.apps.ParentsConfig',
     'babies.apps.BabiesConfig',
+    'permissions.apps.PermissionsConfig',
 
-    'rest_framework'
+    'rest_framework',
+    'guardian',
 ]
 
 MIDDLEWARE = [
@@ -143,3 +145,8 @@ JWT_AUTH = {
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend', # default
+    'guardian.backends.ObjectPermissionBackend',
+)
