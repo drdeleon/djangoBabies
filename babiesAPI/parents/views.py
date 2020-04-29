@@ -4,8 +4,8 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from guardian.shortcuts import assign_perm, remove_perm
 
-# from permissions.services import APIPermissionClassFactory
 from parents.models import Parent
+from babies.serializers import BabySerializer
 from parents.serializers import ParentSerializer
 from permissions.services import APIPermissionClassFactory
 
@@ -27,6 +27,7 @@ class ParentViewSet(viewsets.ModelViewSet):
                     'destroy': False,
                     'update': True,
                     'partial_update': 'change_parent',
+                    'babies': True,
                 }
             }
         ),
@@ -38,3 +39,13 @@ class ParentViewSet(viewsets.ModelViewSet):
         assign_perm('parents.change_parent', user, baby)
         assign_perm('parents.view_parent', user, baby)
         return Response(serializer.data)
+
+    @action(detail=True, methods=['get'])
+    def babies(self, request, pk=None):
+        parent = self.get_object()
+        queryset = parent.baby_set
+
+        babies = BabySerializer(queryset, many=True).data
+        
+        return Response(babies)
+        

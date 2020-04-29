@@ -4,7 +4,6 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from guardian.shortcuts import assign_perm, remove_perm
 
-# from permissions.services import APIPermissionClassFactory
 from events.models import Event
 from events.serializers import EventSerializer
 from permissions.services import APIPermissionClassFactory
@@ -20,7 +19,6 @@ class EventViewSet(viewsets.ModelViewSet):
             permission_configuration={
                 'base': {
                     'create': True,
-                    'list': True,
                 },
                 'instance': {
                     'retrieve': 'events.view_event',
