@@ -24,30 +24,12 @@ user_parent_list = [
     },
 ]
 
-# for user in user_parent_list:
-#     u = User(username=user['username'], email=user['mail'])
-#     u.set_password(user['password'])
-#     u.save()
+for user in user_parent_list:
+    u = User(username=user['username'], email=user['mail'])
+    u.set_password(user['password'])
+    u.save()
 
-#     p = Parent(user=u, name=user['name'])
-#     p.save()
-
-
-print('USERS:')
-for usuario in User.objects.all():
-    print(usuario.id, usuario)
-
-print('PARENTS:')
-for parent in Parent.objects.all():
-    print(parent)
-
-# u = User.objects.get(pk=7)
-# print(u.username)
-
-u = Parent.objects.get(name='Papá Dos')
-
-for baby in u.baby_set.all():
-    print(baby)
-
+    p = Parent(user=u, name=user['name'])
+    p.save()
 
 
