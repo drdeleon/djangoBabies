@@ -23,7 +23,7 @@ class EventViewSet(viewsets.ModelViewSet):
                 'instance': {
                     'retrieve': 'events.view_event',
                     'destroy': False,
-                    'update': True,
+                    'update': 'events.change_event',
                     'partial_update': 'events.change_event',
                 }
             }
@@ -33,6 +33,6 @@ class EventViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         event = serializer.save()
         user = self.request.user
-        assign_perm('parents.change_parent', user, event)
-        assign_perm('parents.view_parent', user, event)
+        assign_perm('events.change_event', user, event)
+        assign_perm('events.view_event', user, event)
         return Response(serializer.data)

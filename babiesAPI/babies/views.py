@@ -24,9 +24,9 @@ class BabyViewSet(viewsets.ModelViewSet):
                 'instance': {
                     'retrieve': 'babies.view_baby',
                     'destroy': False,
-                    'update': True,
+                    'update': 'babies.change_baby',
                     'partial_update': 'babies.change_baby',
-                    'babies': True
+                    'events': True
                 }
             }
         ),

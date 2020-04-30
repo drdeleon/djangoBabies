@@ -16,7 +16,7 @@ class ParentViewSet(viewsets.ModelViewSet):
 
     permission_classes = (
         APIPermissionClassFactory(
-            name='BabyPermission',
+            name='ParentPermission',
             permission_configuration={
                 'base': {
                     'create': True,
@@ -25,7 +25,7 @@ class ParentViewSet(viewsets.ModelViewSet):
                 'instance': {
                     'retrieve': 'parents.view_parent',
                     'destroy': False,
-                    'update': True,
+                    'update': 'change_parent',
                     'partial_update': 'change_parent',
                     'babies': True,
                 }

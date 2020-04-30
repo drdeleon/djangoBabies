@@ -4,21 +4,21 @@ from parents.models import Parent
 
 user_parent_list = [
     {
-        "username": "usuarioCinco",
-        "name": "Papá Cuatro",
-        "mail": "usuarioCuatro@user.com",
-        "password": "usuarioCuatro",
+        "username": "usuarioUno",
+        "name": "usuarioUno",
+        "mail": "usuarioUno@user.com",
+        "password": "usuarioUno",
 
     },
     {
         "username": "usuarioDos",
-        "name": "Papá Dos",
+        "name": "usuarioDos",
         "mail": "usuarioDos@user.com",
         "password": "usuarioDos",
     },
     {
         "username": "usuarioTres",
-        "name": "Papá Tres",
+        "name": "usuarioTres",
         "mail": "usuarioTres@user.com",
         "password": "usuarioTres",
     },
@@ -31,5 +31,6 @@ for user in user_parent_list:
 
     p = Parent(user=u, name=user['name'])
     p.save()
+    print(p)
 
 
